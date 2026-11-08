@@ -233,9 +233,96 @@ const reasonsToChoose = [
   },
 ];
 
+const digitalChannels = [
+  ["Search & discovery", "Google Search, Google Ads, and Google Business Profile"],
+  ["Social media", "Facebook, Instagram, LinkedIn, and TikTok"],
+  ["Video", "YouTube and short-form social video"],
+  ["Measurement", "Google Analytics 4, Search Console, and Tag Manager"],
+  ["Direct communication", "Email campaigns, newsletters, and automated follow-ups"],
+  ["Owned digital channels", "Business websites, landing pages, and online stores"],
+];
+
+const marketingProcess = [
+  {
+    title: "Discovery & goals",
+    description:
+      "Understand your business, audience, current digital presence, and the outcomes you want to achieve.",
+  },
+  {
+    title: "Research & strategy",
+    description:
+      "Research customers, competitors, and channels, then shape a plan around your objectives and budget.",
+  },
+  {
+    title: "Content & campaign planning",
+    description:
+      "Plan messaging, creative content, campaign structure, and the customer journey across selected channels.",
+  },
+  {
+    title: "Launch & management",
+    description:
+      "Publish content and campaigns, manage audience interactions, and monitor activity against the plan.",
+  },
+  {
+    title: "Measurement & reporting",
+    description:
+      "Track relevant reach, engagement, traffic, leads, and conversion measures using available platform data.",
+  },
+  {
+    title: "Optimization",
+    description:
+      "Use performance insights to refine content, targeting, landing experiences, and campaign activity.",
+  },
+];
+
+const audiences = [
+  ["Startups & SMEs", "Build an initial digital presence and create a practical foundation for growth."],
+  ["Established businesses", "Strengthen branding, customer engagement, and digital campaign performance."],
+  ["E-commerce & online stores", "Promote products, improve shopping journeys, and encourage customer retention."],
+  ["Service providers", "Reach relevant audiences, generate inquiries, and communicate service value."],
+  ["B2B & corporate teams", "Support professional visibility, business networking, and lead generation."],
+  ["Education & organizations", "Promote institutions, programs, and organizational services through digital channels."],
+];
+
 export default function DigitalMarketingServices() {
   return (
     <>
+      <section
+        className="mt-12 rounded-2xl border border-[#D4AF37]/25 bg-[#100D0A] p-6 sm:p-8"
+        aria-labelledby="digital-marketing-about-heading"
+      >
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">
+          Digital Marketing Division
+        </p>
+        <h2
+          id="digital-marketing-about-heading"
+          className="mt-2 text-2xl font-bold text-white sm:text-3xl"
+        >
+          About Our Digital Marketing Module
+        </h2>
+        <div className="mt-4 max-w-4xl space-y-4 text-sm leading-7 text-zinc-300">
+          <p>
+            The Digital Marketing Division of MK Group of Companies helps
+            businesses, brands, startups, and organizations establish a strong
+            digital presence, reach target audiences, and pursue sustainable
+            growth in the digital marketplace.
+          </p>
+          <p>
+            We bring together creativity, technology, data-informed strategy,
+            and modern marketing techniques to support online branding,
+            campaigns, audience engagement, lead generation, and performance
+            improvement.
+          </p>
+          <p>
+            From shaping a brand&apos;s identity to managing its digital
+            presence, our services are designed to increase visibility,
+            strengthen customer relationships, and create business
+            opportunities. Our focus is on long-term digital strategies that
+            deliver measurable value.
+          </p>
+        </div>
+      </section>
+
       <section className="mt-12" aria-labelledby="services-heading">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">
           What we offer
@@ -291,6 +378,90 @@ export default function DigitalMarketingServices() {
                 </ul>
               </div>
             </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16" aria-labelledby="digital-channels-heading">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">
+          Where we work
+        </p>
+        <h2
+          id="digital-channels-heading"
+          className="mt-2 text-2xl font-bold text-white sm:text-3xl"
+        >
+          Digital Channels &amp; Measurement
+        </h2>
+        <p className="mt-3 max-w-3xl text-sm leading-7 text-zinc-300">
+          We select channels and measurement approaches based on your audience,
+          objectives, and campaign requirements.
+        </p>
+        <dl className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {digitalChannels.map(([channel, platforms]) => (
+            <div
+              key={channel}
+              className="rounded-xl border border-zinc-800 bg-[#100D0A] p-5"
+            >
+              <dt className="font-semibold text-[#F5E29E]">{channel}</dt>
+              <dd className="mt-2 text-sm leading-6 text-zinc-300">{platforms}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section className="mt-16" aria-labelledby="marketing-process-heading">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">
+          From planning to improvement
+        </p>
+        <h2
+          id="marketing-process-heading"
+          className="mt-2 text-2xl font-bold text-white sm:text-3xl"
+        >
+          Our Marketing Process
+        </h2>
+        <p className="mt-3 text-sm leading-7 text-zinc-300">
+          A flexible, goal-focused process helps keep marketing activity aligned
+          with your business needs.
+        </p>
+        <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {marketingProcess.map((step, index) => (
+            <li
+              key={step.title}
+              className="rounded-xl border border-zinc-800 bg-[#100D0A] p-5"
+            >
+              <span className="text-xs font-bold tracking-wider text-[#D4AF37]">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-2 font-semibold text-white">{step.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-300">
+                {step.description}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="mt-16" aria-labelledby="marketing-audiences-heading">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">
+          Who we support
+        </p>
+        <h2
+          id="marketing-audiences-heading"
+          className="mt-2 text-2xl font-bold text-white sm:text-3xl"
+        >
+          Businesses &amp; Organizations We Support
+        </h2>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {audiences.map(([audience, description]) => (
+            <div
+              key={audience}
+              className="rounded-xl border border-zinc-800 bg-[#100D0A] p-5"
+            >
+              <h3 className="font-semibold text-[#F5E29E]">{audience}</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-300">
+                {description}
+              </p>
+            </div>
           ))}
         </div>
       </section>
