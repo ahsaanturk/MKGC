@@ -21,6 +21,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { companies } from "@/data/companies";
+import DigitalMarketingServices from "@/components/DigitalMarketingServices";
+import SoftwareTechnologyServices from "@/components/SoftwareTechnologyServices";
 
 const iconMap: Record<string, LucideIcon> = {
   Megaphone,
@@ -105,7 +107,12 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
           </Link>
         </section>
 
-        <section className="mt-12" aria-labelledby="services-heading">
+        {company.id === "digital-marketing" ? (
+          <DigitalMarketingServices />
+        ) : company.id === "software" ? (
+          <SoftwareTechnologyServices />
+        ) : (
+          <section className="mt-12" aria-labelledby="services-heading">
           <div className="mb-6">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">
               What we offer
@@ -128,9 +135,12 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
               </li>
             ))}
           </ul>
-        </section>
+          </section>
+        )}
 
-        {company.highlights.length > 0 && (
+        {company.id !== "digital-marketing" &&
+          company.id !== "software" &&
+          company.highlights.length > 0 && (
           <section className="mt-12" aria-labelledby="highlights-heading">
             <h2
               id="highlights-heading"
@@ -151,7 +161,8 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
           </section>
         )}
 
-        <section className="mt-12 grid gap-4 sm:grid-cols-3">
+        {company.id !== "software" && company.stats.length > 0 && (
+          <section className="mt-12 grid gap-4 sm:grid-cols-3">
           {company.stats.map((stat) => (
             <div
               key={stat.label}
@@ -161,7 +172,8 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
               <p className="mt-1 text-sm text-zinc-400">{stat.label}</p>
             </div>
           ))}
-        </section>
+          </section>
+        )}
 
         {company.id === "shopping-mall" && (
           <Link
