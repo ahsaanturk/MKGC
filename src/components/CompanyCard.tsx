@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
+import Link from "next/link";
 import { Company } from "@/data/companies";
 
 interface CompanyCardProps {
   company: Company;
-  onClick: (company: Company) => void;
 }
 
 function RenderCompanyIcon({ id }: { id: string }) {
@@ -132,12 +131,12 @@ function RenderCompanyIcon({ id }: { id: string }) {
   }
 }
 
-export default function CompanyCard({ company, onClick }: CompanyCardProps) {
+export default function CompanyCard({ company }: CompanyCardProps) {
   return (
-    <button
-      type="button"
-      onClick={() => onClick(company)}
-      className="group relative flex h-[92px] w-full flex-col items-center justify-center rounded-xl border border-[#C5A059]/40 bg-[#120F0C]/90 p-2 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#F5E29E] hover:bg-[#1A1510] hover:shadow-[0_0_20px_rgba(212,175,55,0.35)] focus:outline-none sm:h-[100px]"
+    <Link
+      href={`/companies/${company.id}`}
+      className="group relative flex h-[92px] w-full flex-col items-center justify-center rounded-xl border border-[#C5A059]/40 bg-[#120F0C]/90 p-2 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#F5E29E] hover:bg-[#1A1510] hover:shadow-[0_0_20px_rgba(212,175,55,0.35)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F5E29E] sm:h-[100px]"
+      aria-label={`Learn about ${company.name} and its services`}
     >
       {/* Golden Icon */}
       <div className="mb-1.5 flex items-center justify-center">
@@ -148,6 +147,6 @@ export default function CompanyCard({ company, onClick }: CompanyCardProps) {
       <span className="text-[12px] font-medium tracking-tight text-white transition-colors duration-200 group-hover:text-[#F5E29E] sm:text-[13px]">
         {company.name}
       </span>
-    </button>
+    </Link>
   );
 }

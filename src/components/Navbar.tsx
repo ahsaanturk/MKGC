@@ -10,7 +10,6 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Our Companies", href: "/companies" },
-  { name: "Services", href: "/services" },
   { name: "Shopping Mall", href: "/shopping-mall" },
   { name: "Contact", href: "/contact" },
 ];
@@ -30,7 +29,9 @@ export default function Navbar() {
         {/* Center: Desktop Navigation Links */}
         <nav className="hidden items-center space-x-7 md:flex lg:space-x-8">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive =
+              pathname === link.href ||
+              (link.href === "/companies" && pathname.startsWith("/companies/"));
             return (
               <Link
                 key={link.name}
@@ -81,7 +82,9 @@ export default function Navbar() {
         <div className="border-b border-[#D4AF37]/20 bg-[#0c0a08] px-6 pb-6 pt-3 md:hidden">
           <nav className="flex flex-col space-y-3">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive =
+                pathname === link.href ||
+                (link.href === "/companies" && pathname.startsWith("/companies/"));
               return (
                 <Link
                   key={link.name}

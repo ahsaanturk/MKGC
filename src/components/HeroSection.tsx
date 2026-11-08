@@ -1,16 +1,10 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle2, Shield, MapPin } from "lucide-react";
-import { companies, Company } from "@/data/companies";
+import { companies } from "@/data/companies";
 import CompanyCard from "./CompanyCard";
-import CompanyModal from "./CompanyModal";
 
 export default function HeroSection() {
-  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
-
   return (
     <section className="relative overflow-hidden bg-[#080706] pt-8 pb-10 lg:pt-10 lg:pb-14">
       {/* Golden Glowing Horizon Line Top Accent */}
@@ -58,16 +52,16 @@ export default function HeroSection() {
             {/* Buttons Row */}
             <div className="mt-7 flex flex-wrap items-center gap-3.5">
               <Link
-                href="/companies"
+                href="#companies"
                 className="inline-flex items-center justify-center rounded-xl bg-[#F5E29E] px-6 py-2.5 text-sm font-bold text-black shadow-[0_2px_12px_rgba(212,175,55,0.4)] transition-all duration-200 hover:bg-[#FFEAA3] hover:scale-[1.02] active:scale-95"
               >
                 Explore Our Companies
               </Link>
               <Link
-                href="/services"
+                href="/companies"
                 className="inline-flex items-center justify-center rounded-xl border border-[#D4AF37] bg-black/60 px-6 py-2.5 text-sm font-semibold text-[#F5E29E] shadow-sm transition-all duration-200 hover:bg-[#1C160F] hover:border-[#FFEAA3] active:scale-95"
               >
-                Our Services
+                Browse Companies &amp; Services
               </Link>
             </div>
 
@@ -105,12 +99,11 @@ export default function HeroSection() {
             </div>
 
             {/* 4x3 Grid matching screenshot exactly */}
-            <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3">
+            <div id="companies" className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3">
               {companies.map((company) => (
                 <CompanyCard
                   key={company.id}
                   company={company}
-                  onClick={(comp) => setSelectedCompany(comp)}
                 />
               ))}
             </div>
@@ -120,11 +113,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Company Modal */}
-      <CompanyModal
-        company={selectedCompany}
-        onClose={() => setSelectedCompany(null)}
-      />
     </section>
   );
 }

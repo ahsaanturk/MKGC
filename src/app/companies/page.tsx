@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Search,
-  Filter,
   CheckCircle2,
   Mail,
   ExternalLink,
@@ -22,8 +21,7 @@ import {
   Camera,
   LucideIcon,
 } from "lucide-react";
-import { companies, Company } from "@/data/companies";
-import CompanyModal from "@/components/CompanyModal";
+import { companies } from "@/data/companies";
 
 const iconMap: Record<string, LucideIcon> = {
   Megaphone,
@@ -42,7 +40,6 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function CompaniesPage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
 
   const filteredCompanies = companies.filter((c) =>
     c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -134,14 +131,13 @@ export default function CompaniesPage() {
                     <span>Inquire</span>
                   </a>
 
-                  <button
-                    type="button"
-                    onClick={() => setSelectedCompany(company)}
+                  <Link
+                    href={`/companies/${company.id}`}
                     className="inline-flex items-center gap-1.5 rounded-lg bg-[#1C160F] px-3.5 py-1.5 text-xs font-semibold text-[#F5E29E] border border-[#D4AF37]/40 transition-colors hover:bg-[#D4AF37] hover:text-black"
                   >
                     View Details
                     <ExternalLink className="h-3 w-3" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             );
@@ -156,11 +152,6 @@ export default function CompaniesPage() {
 
       </div>
 
-      {/* Modal */}
-      <CompanyModal
-        company={selectedCompany}
-        onClose={() => setSelectedCompany(null)}
-      />
     </div>
   );
 }
